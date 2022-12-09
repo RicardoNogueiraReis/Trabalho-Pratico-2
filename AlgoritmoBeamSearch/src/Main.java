@@ -1,6 +1,5 @@
 /*
-* [Trabalho Prático #2 - LEI SO]
-* 2022-2023
+* [Trabalho Prático #2 - LEI SO] - 2022-2023
 * Ricardo Reis - 202000806
 * Diogo Silva  - 202000839
 * */
