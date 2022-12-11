@@ -1,2 +1,9 @@
 # Trabalho-Pratico-2
-Trabalho prático para a UC de Sistemas Operativos
+### Sistemas Operativos
+###### Docente: Aníbal Ponte
+
+---
+> Ricardo Reis 202000806
+> Diogo Silva  202000839
+
+
