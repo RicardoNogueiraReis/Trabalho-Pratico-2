@@ -1,65 +1,75 @@
 package Objects;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Bag {
-    private final int MAX_WEIGHT;
-    private ArrayList<Item> ItemList;
-    private int currentValue;
-    private int currentWeight;
-    private boolean isOverweight;
+    public int maxWeight;
+    public Item[] items;
+    public int currentValue;
+    public int bestValue;
+    public int currentWeight;
+    public boolean isOverweight;
 
-    public Bag(int MAX_WEIGHT, ArrayList<Item> ItemList){
-        this.MAX_WEIGHT = MAX_WEIGHT;
-        this.ItemList = ItemList;
-        countCurrentValueAndWeight();
+    public Bag(){ }
+
+    public void setMaxWeight(int maxWeight) {
+        this.maxWeight = maxWeight;
     }
 
-    public Bag(int MAX_WEIGHT) {
-        this(MAX_WEIGHT, new ArrayList<>());
+    public void setBestValue(int bestValue) {
+        this.bestValue = bestValue;
     }
 
-    public void setItemList(ArrayList<Item> itemList) {
-        if(itemList.isEmpty())
-            return;
-
-        ItemList = itemList;
-        countCurrentValueAndWeight();
+    public void setItems(Item[] items) {
+        this.items = items;
+        checkCurrentValue();
+        checkCurrentWeight();
+        checkIfOverweight();
     }
 
-    public void addItem(Item newItem) {
-        if(newItem == null)
-            return;
-
-        ItemList.add(newItem);
-        currentWeight += newItem.getWEIGHT();
-        setIfOverweight();
+    public void setCurrentValue(int currentValue) {
+        this.currentValue = currentValue;
     }
 
-    /*  Muda o valor booleano isOverweight se o peso atual
-     * passar do peso máximo da mochila.
-     */
-    private void setIfOverweight(){
-        isOverweight = currentWeight > MAX_WEIGHT;
+    public void setCurrentWeight(int currentWeight) {
+        this.currentWeight = currentWeight;
     }
 
-    public ArrayList<Item> getItemList() { return ItemList; }
+    public void setOverweight(boolean overweight) {
+        isOverweight = overweight;
+    }
 
-    public boolean isOverweight(){ return currentWeight > MAX_WEIGHT; }
+    private void checkIfOverweight(){
+        if(currentWeight > maxWeight)
+            isOverweight = true;
+    }
 
-    /*
-    * Conta o valor e o peso total atual da mochila
-    * */
-    private void countCurrentValueAndWeight(){
-        int v = 0;
-        int w = 0;
+    public void checkCurrentValue(){
+        int newValue = 0;
+        for(Item i: items)
+            newValue += i.value;
+    }
 
-        for(Item i: ItemList){
-            v += i.getVALUE();
-            w += i.getWEIGHT();
-        }
+    public void checkCurrentWeight(){
+        int newWeight = 0;
+        for(Item i: items)
+            newWeight += i.weight;
+    }
 
-        this.currentValue = v;
-        this.currentWeight = w;
+    public void sortValueWeightRatio(){
+        Arrays.sort(items, (o1, o2) ->
+                    Double.compare(o1.value/ (double) o1.weight,
+                                   o2.value / (double) o2.weight)
+                );
+    }
+
+    @Override
+    public String toString(){
+        String p = "";
+
+        for(Item i: items)
+            p += i.value + " " + i.weight + "\n";
+
+        return p;
     }
 }

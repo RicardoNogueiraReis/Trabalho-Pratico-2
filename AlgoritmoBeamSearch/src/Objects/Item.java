@@ -1,15 +1,9 @@
 package Objects;
 
 public class Item {
-    private final int VALUE;
-    private final int WEIGHT;
+    public int value;
+    public int weight;
 
-    public Item(int VALUE, int WEIGHT) {
-        this.VALUE = VALUE;
-        this.WEIGHT = WEIGHT;
-    }
+    public Item() { }
 
-    public int getVALUE() { return VALUE; }
-
-    public int getWEIGHT() { return WEIGHT; }
 }

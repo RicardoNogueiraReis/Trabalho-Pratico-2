@@ -5,27 +5,47 @@
 * Diogo Silva  - 202000839
 * */
 
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.FileReader;
+
+import java.io.IOException;
+import java.io.FileNotFoundException;
+
+import File.KnapTestsFileHandler;
 import Objects.Bag;
 import Objects.Item;
 
-import java.util.ArrayList;
+import static java.lang.Thread.sleep;
 
 public class Main {
     public static void main(String[] args) {
 
-        // Parametrizável
-        int MAX_WEIGHT = 11;
-        int numberOfItems = 4;
+        Bag bag = new Bag();
 
-        Item item1 = new Item(5,10);
-        Item item2 = new Item(5,10);
-        Item item3 = new Item(5,10);
+        KnapTestsFileHandler.readItemsFromFile("knap_tests_extended\\ex05.txt", bag);
 
-        Bag bag = new Bag(MAX_WEIGHT);
-        bag.addItem(item1);
-        bag.addItem(item2);
-        bag.addItem(item3);
+        /*
+        long start = System.currentTimeMillis();
 
-        System.out.println(bag.isOverweight());
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        long end = System.currentTimeMillis();
+
+        System.out.println(end - start);
+        // */
+
+
+        System.out.println(bag);
+        System.out.println("»»»");
+        bag.sortValueWeightRatio();
+        System.out.println(bag);
+
+
     }
 }

@@ -23,7 +23,7 @@
 hs_err_pid*
 
 # .idea
-**/.idea/workspace.xml **/.idea/tasks.xml
+.idea
 
 # To Ignore (custom tests or whatever)
-.ignore
+ignore
