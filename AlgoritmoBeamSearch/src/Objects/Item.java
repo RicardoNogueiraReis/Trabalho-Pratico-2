@@ -6,4 +6,9 @@ public class Item {
 
     public Item() { }
 
+    @Override
+    public String toString(){
+        return value + " " + weight;
+    }
+
 }
